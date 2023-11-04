@@ -9,4 +9,17 @@ const getInmuebles = async (req,res) => {
     }
 }
 
-module.exports = {getInmuebles}
+const createInmuebles = async (req,res) => {
+    try {
+        const inmueble = await InmuebleModel.create(req.body)
+        res.json(inmueble)
+    } catch (error) {
+        res.json({fatal: error.message})
+    }
+}
+
+const createInm = (req,res) => {
+
+}
+
+module.exports = {getInmuebles, createInmuebles}

@@ -5,7 +5,7 @@ const InmuebleSchema = new Schema({
     letra: String,
     extension: Number,
     habitaciones: Number,
-    alquilado: Boolean,
+    alquilado: String,
     propietario: String,
     contacto: String
 }, {
