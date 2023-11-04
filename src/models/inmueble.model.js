@@ -10,15 +10,7 @@ const InmuebleSchema = new Schema({
     contacto: String
 }, {
     versionKey: false,
-    timestamps: true,
-    //TODO: fijarme si realmente voy a usar virtuales
-    toObject: {virtuals: true},
-    toJSON: {
-        virtuals: true,
-        transform: function(doc,ret){
-            delete ret.id
-        }
-    }
+    timestamps: true
 })
 
 module.exports = model('inmueble', InmuebleSchema, 'inmuebles')

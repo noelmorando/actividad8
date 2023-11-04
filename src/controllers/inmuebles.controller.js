@@ -1,3 +1,4 @@
+const inmuebleModel = require('../models/inmueble.model')
 const InmuebleModel = require('../models/inmueble.model')
 
 const getInmuebles = async (req,res) => {
@@ -18,8 +19,24 @@ const createInmuebles = async (req,res) => {
     }
 }
 
-const createInm = (req,res) => {
-
+const updateInmuebles = async (req,res) => {
+    try {
+        const {inmuebleId} = req.params
+        const result = await InmuebleModel.findByIdAndUpdate(inmuebleId, req.body, {new:true})
+        res.json(result)
+    } catch (error) {
+        res.json({fatal:error.message})
+    }
 }
 
-module.exports = {getInmuebles, createInmuebles}
+const deleteInmueble = async (req,res) => {
+    try {
+        const {inmuebleId} = req.params
+        const result = await inmuebleModel.findByIdAndDelete(inmuebleId)
+        res.json(result)
+    } catch (error) {
+        res.json({fatal: error.message})
+    }
+}
+
+module.exports = {createInmuebles,getInmuebles, updateInmuebles,deleteInmueble}
